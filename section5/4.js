@@ -15,6 +15,8 @@ function solution(m, arr) {
         // 새롭게 추가된 연속부분수열 누적
         cnt += (idx2 - idx1 + 1);
     }
+
+    return cnt;
 }
 
 
