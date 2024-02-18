@@ -1,36 +1,35 @@
 function solution(s, t) {
-    let dist = 1000;
-    let answer = [];
+  let distance = [];
+  let point = 1000;
 
-    // → 방향
-    for(let i = 0; i < s.length; i++) {
-        if(s[i] === t) {
-            dist = 0;
-        }
-        else {
-            dist++;
-        }
-        answer.push(dist);
+  // → 방향
+  for (let i = 0; i < s.length; i++) {
+    // t와 같지 않을 경우 포인트 증가
+    if (s[i] === t) {
+      point = 0;
+    } else {
+      point++;
     }
 
-    // 초기화
-    dist = 1000;
+    distance.push(point);
+  }
 
-    // ← 방향
-    for(let i = s.length-1; i >= 0; i--) {
-        if(s[i] === t) {
-            dist = 0;
-        }
-        else {
-            dist++;
+  // 포인트 초기화
+  point = 1000;
 
-            answer[i] = Math.min(answer[i], dist);
-        }
+  // ← 방향
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === t) {
+      point = 0;
+    } else {
+      point++;
     }
 
-    return answer;
+    // ←, →중 가장 작은 값 리턴
+    distance[i] = Math.min(distance[i], point);
+  }
+
+  return distance;
 }
 
-
-// test case
 console.log(solution("teachermode", "e"));
