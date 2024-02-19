@@ -1,29 +1,31 @@
 function solution(board, moves) {
-  let cnt = 0;
+  let disappearCnt = 0;
   let stack = [];
 
-  moves.forEach((v) => {
+  moves.forEach((crain) => {
     for (let i = 0; i < board.length; i++) {
-      // 현재 요소가 0이 아니어야 인형을 만난 것으로 간주
-      if (board[i][v - 1] !== 0) {
-        // 꺼낸 인형 있는 공간 빈 공간으로 변경
-        let tmp = board[i][v - 1];
+      if (board[i][crain - 1] !== 0) {
+        // 현재 뽑은 인형
+        let doll = board[i][crain - 1];
 
-        board[i][v - 1] = 0;
+        // 뽑았기 때문에 사라진 것으로 간주
+        board[i][crain - 1] = 0;
 
-        // 꺼낸 인형이 스택 최상단과 같은지 비교
-        if (tmp === stack[stack.length - 1]) {
+        // 뽑은 인형, 스택 최상단 인형이 같은지 판단
+        if (doll === stack[stack.length - 1]) {
           stack.pop();
-          cnt += 2;
+          // 두 인형 모두 사라짐
+          disappearCnt += 2;
         } else {
-          stack.push(tmp);
+          stack.push(doll);
         }
+        // 한 줄에 한 인형만 뽑도록
         break;
       }
     }
   });
 
-  return cnt;
+  return disappearCnt;
 }
 
 // test case
