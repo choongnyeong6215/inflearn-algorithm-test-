@@ -1,9 +1,11 @@
+// 해시맵 알고리즘 풀이
 function solution(words1, words2) {
-  let firstWordMap = new Map();
-  let secondWordMap = new Map();
+  const firstWordMap = new Map();
+  const secondWordMap = new Map();
 
-  let answer = "";
+  let answer = "YES";
 
+  // 단어 구성 문자열 판별
   for (let item of words1) {
     if (firstWordMap.has(item)) {
       firstWordMap.set(item, firstWordMap.get(item) + 1);
@@ -20,11 +22,12 @@ function solution(words1, words2) {
     }
   }
 
-  for (let [key, value] of firstWordMap) {
+  // 아나그램 판단
+  for ([key, value] of firstWordMap) {
     if (secondWordMap.has(key) && secondWordMap.get(key) === value) {
       answer = "YES";
     } else {
-      answer = "NO";
+      return "NO";
     }
   }
 
