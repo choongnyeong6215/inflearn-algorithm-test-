@@ -1,19 +1,17 @@
 function solution(n, k) {
-  const queue = Array.from({ length: n }, (v, i) => i + 1);
+  const princes = Array.from({ length: n }, (v, i) => i + 1);
 
-  while (queue.length) {
+  // 왕자 한명 남을때까지
+  while (princes.length > 0) {
+    // k번째 왕자 탈락 처리
     for (let i = 1; i < k; i++) {
-      // k앞의 두 값 뒤로 이동
-      queue.push(queue.shift());
+      princes.push(princes.shift());
     }
 
-    // k번째 왕자 제외
-    queue.shift();
+    princes.shift();
 
-    // 왕자 1명 남으면 종료
-    if (queue.length === 1) {
-      return queue[0];
-    }
+    // 한명 남은 경우
+    if (princes.length === 1) return princes[0];
   }
 }
 

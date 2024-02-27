@@ -2,15 +2,13 @@ function solution(essential, subject) {
   const queue = [...essential];
 
   for (let item of subject) {
+    // 필수과목 신청했다면 순서 일치한지 확인 (큐 지워가며 체크)
     if (queue.includes(item)) {
-      // 순회중인 아이템과 스택 첫 요소가 같지 않으면 잘못 설계된 수업계획으로 간주
-      if (item !== queue.shift()) {
-        return "NO";
-      }
+      if (item !== queue.shift()) return "NO";
     }
   }
 
-  // 큐에 요소가 남아있으면 필수과목을 선택하지 않았음으로 잘못 설계된 수업계획임
+  // 큐에 요소가 남으면 필수과목 신청 안한 것으로 간주
   return queue.length ? "NO" : "YES";
 }
 
