@@ -1,17 +1,17 @@
 function solution(arr) {
-    let answer = 0;
-    let corCnt = 0;
+  let accmScore = 0;
+  let totalScore = 0;
 
-    for(let num of arr) {
-        if(num === 1) {
-            corCnt++;
-            answer += corCnt;
-        }
-        else {
-            corCnt = 0;
-        }
+  for (let num of arr) {
+    if (num === 1) {
+      accmScore++;
+      totalScore += accmScore;
+    } else {
+      accmScore = 0;
     }
-    return answer;
+  }
+
+  return totalScore;
 }
 
 // test case

@@ -3,15 +3,13 @@ function solution(arr) {
 
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
-      let stdBong = arr[i][j]; // 현재 봉우리
-      let topNum = i > 0 ? arr[i][j] : 0; // 상
-      let bottomNum = i < arr.length - 1 ? arr[i + 1][j] : 0; // 하
-      let leftNum = arr[i][j - 1] ?? 0; // 좌
-      let rightNum = arr[j][j + 1] ?? 0; // 우
+      const curLocation = arr[i][j]; // 현 위치
+      const top = i > 0 ? arr[i - 1][j] : 0; // 상
+      const bottom = i < arr.length - 1 ? arr[i + 1][j] : 0; // 하
+      const left = j > 0 ? arr[i][j - 1] : 0; // 좌
+      const right = j < arr.length - 1 ? arr[i][j + 1] : 0; // 우
 
-      let BongArr = [stdBong, topNum, bottomNum, leftNum, rightNum];
-
-      if (stdBong === BongArr.sort((a, b) => b - a)[0]) {
+      if (curLocation === Math.max(curLocation, top, bottom, left, right)) {
         bongCnt++;
       }
     }

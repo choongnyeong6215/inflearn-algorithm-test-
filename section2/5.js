@@ -1,19 +1,15 @@
 function solution(arr) {
-    let answer = 0;
-    let corCnt = 0;
+  let grade = Array.from({ length: arr.length }).fill(1);
 
-    for(let num of arr) {
-        if(num === 1) {
-            corCnt++;
-            answer += corCnt;
-        }
-        else {
-            corCnt = 0;
-        }
+  for (let i = 0; i <= arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] > arr[i]) grade[i]++;
     }
-    return answer;
+  }
+
+  return grade;
 }
 
 // test case
-console.log(solution([1, 0, 1, 1, 1, 0, 0, 1, 1, 0]));
-console.log(solution([0, 0, 1, 1, 1, 0, 0, 0, 0, 0]));
+console.log(solution([87, 89, 92, 100, 76]));
+console.log(solution([92, 92, 92, 100, 75]));
