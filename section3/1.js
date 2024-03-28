@@ -1,15 +1,9 @@
 function solution(words) {
-    words = words.toLowerCase();
-    const revWords = words.split("").reverse().join("");
+  const orgWords = words.toLowerCase();
+  const revWords = [...orgWords].reverse().join("");
 
-    if(words === revWords) {
-        return "YES";
-    }
-    else {
-        return "NO";
-    }
+  return orgWords === revWords ? "YES" : "NO";
 }
-
 
 // test case
 console.log(solution("gooG"));

@@ -1,15 +1,14 @@
 function solution(words) {
-    words = words.toLowerCase().replace(/[^a-z]/g, "");
-    const revWords = words.split("").reverse().join("");
+  const alpha = words
+    .toLowerCase()
+    .split("")
+    .filter((v) => /[a-z]/g.test(v))
+    .join("");
 
-    if(words === revWords) {
-        return "YES";
-    }
-    else {
-        return "NO";
-    }
+  const revAlpha = [...alpha].reverse().join("");
+
+  return alpha === revAlpha ? "YES" : "NO";
 }
-
 
 // test case
 console.log(solution("found7, time: study; Yduts; emit, 7Dnuof"));
