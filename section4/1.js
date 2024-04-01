@@ -1,26 +1,25 @@
 function soluttion(arr) {
-    let maxNum = Number.MIN_SAFE_INTEGER;
-    let stdNum = 0; // 자릿수 합계 원본 값
+  let std = Number.MIN_SAFE_INTEGER;
+  let maxNum = 0;
 
-    for(let num of arr) {
-        // 자릿수 합계
-        let sum = num.toString().split("").reduce((accr, curv) => accr + Number(curv), 0);
+  for (let num of arr) {
+    const sum = num
+      .toString()
+      .split("")
+      .reduce((a, b) => a + Number(b), 0);
 
-        if(sum > maxNum) {
-            maxNum = sum;
-            stdNum = num;
-        }
-        else if(sum === maxNum) {
-            if(num > stdNum) {
-                return num;
-            }
-            else {
-                return stdNum;
-            }
-        }
+    if (sum > std) {
+      std = sum;
+      maxNum = num;
     }
-}
 
+    if (sum === std) {
+      maxNum = num > maxNum ? num : maxNum;
+    }
+  }
+
+  return maxNum;
+}
 
 // test case
 console.log(soluttion([128, 460, 603, 40, 521, 137, 123]));
