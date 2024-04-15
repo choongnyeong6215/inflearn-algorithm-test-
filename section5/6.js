@@ -1,26 +1,17 @@
-// 해시맵 알고리즘 풀이
 function solution(vote) {
-  const candidates = new Map();
-
-  for (let item of vote) {
-    // 투표 이력 있으면 카운팅
-    if (candidates.has(item)) {
-      candidates.set(item, candidates.get(item) + 1);
-    } else {
-      candidates.set(item, 1);
-    }
-  }
-
-  // 선출된 회장
+  let votes = new Map();
+  let maxVotes = Number.MIN_SAFE_INTEGER;
   let president = "";
 
-  // 각 후보 투표 수
-  let voteCnt = 0;
+  for (let v of vote) {
+    if (votes.has(v)) votes.set(v, votes.get(v) + 1);
+    else votes.set(v, 1);
+  }
 
-  for ([key, value] of candidates) {
-    if (voteCnt < value) {
-      president = key;
-      voteCnt = value;
+  for (let [curPresident, vote] of votes) {
+    if (vote > maxVotes) {
+      maxVotes = vote;
+      president = curPresident;
     }
   }
 

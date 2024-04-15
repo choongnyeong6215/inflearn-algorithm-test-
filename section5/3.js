@@ -2,31 +2,29 @@ function solution(m, arr) {
   let sum = 0;
   let cnt = 0;
 
-  // 각 요소 참조할 포인터
-  let pointer1 = 0;
-  let pointer2 = 0;
+  // arr 참조할 포인터
+  let p1 = 0;
+  let p2 = 0;
 
-  for (pointer2; pointer2 < arr.length; pointer2++) {
-    sum += arr[pointer2];
+  for (p2; p2 < arr.length; p2++) {
+    sum += arr[p2];
 
-    // m과 같은 경우
     if (sum === m) {
       cnt++;
 
-      // pointer1 참조값 제거
-      sum -= arr[pointer1++];
+      sum -= arr[p1++];
     }
 
-    // m보다 큰 경우
     while (sum > m) {
-      sum -= arr[pointer1++];
+      sum -= arr[p1++];
 
       if (sum === m) {
         cnt++;
+
+        sum -= arr[p1++];
       }
     }
   }
-
   return cnt;
 }
 

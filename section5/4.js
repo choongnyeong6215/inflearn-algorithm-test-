@@ -2,19 +2,18 @@ function solution(m, arr) {
   let sum = 0;
   let cnt = 0;
 
-  // 각 요소 참조할 포인터
-  let pointer1 = 0;
-  let pointer2 = 0;
+  // arr 참조할 포인터
+  let p1 = 0;
+  let p2 = 0;
 
-  for (pointer2; pointer2 < arr.length; pointer2++) {
-    sum += arr[pointer2];
+  for (p2; p2 < arr.length; p2++) {
+    sum += arr[p2];
 
-    // m보다 작도록 합계 조절
     while (sum > m) {
-      sum -= arr[pointer1++];
+      sum -= arr[p1++];
     }
 
-    cnt += pointer2 - pointer1 + 1;
+    cnt += p2 - p1 + 1;
   }
 
   return cnt;

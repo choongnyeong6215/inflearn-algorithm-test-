@@ -1,8 +1,8 @@
-// 슬라이딩 윈도우 알고리즘 풀이
 function solution(k, arr) {
-  // 최초 3일 매출액
+  // 최초 k일 매출
   let sales = arr[0] + arr[1] + arr[2];
-  let maxSales = 0;
+
+  let maxSales = sales;
 
   for (let i = k; i < arr.length; i++) {
     sales += arr[i] - arr[i - k];
