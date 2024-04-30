@@ -1,22 +1,20 @@
 function solution(bracket) {
+  let cnt = 0;
   const stack = [];
-  let stickCnt = 0;
 
   for (let i = 0; i < bracket.length; i++) {
-    if (bracket[i] === "(") stack.push("(");
+    if (bracket[i] === "(") stack.push(bracket[i]);
     else {
       stack.pop();
 
       // 레이저인 경우
-      if (bracket[i - 1] === "(") stickCnt += stack.length;
-      // 쇠막대기인 경우
-      else {
-        stickCnt++;
-      }
+      if (bracket[i - 1] === "(") cnt += stack.length;
+      // 막대기의 끝인 경우
+      else cnt += 1;
     }
   }
 
-  return stickCnt;
+  return cnt;
 }
 
 // test case

@@ -5,13 +5,13 @@ function solution(calculation) {
     if (/\d/.test(item)) {
       stack.push(Number(item));
     } else {
-      const b = stack.pop(); // 연산자 기준 우측 값
-      const a = stack.pop(); // 연산자 기준 좌측 값
+      const sNum = stack.pop();
+      const fNum = stack.pop();
 
-      if (item === "+") stack.push(a + b);
-      else if (item === "-") stack.push(a - b);
-      else if (item === "*") stack.push(a * b);
-      else if (item === "/") stack.push(a / b);
+      if (item === "+") stack.push(fNum + sNum);
+      if (item === "-") stack.push(fNum - sNum);
+      if (item === "*") stack.push(fNum * sNum);
+      if (item === "/") stack.push(fNum / sNum);
     }
   }
 

@@ -1,13 +1,11 @@
 function solution(bracket) {
   const stack = [];
 
+  if (stack[0] === "(") return "NO";
+
   for (let item of bracket) {
-    if (item === "(") {
-      stack.push(item);
-    } else {
-      // 한 쌍 제거
-      stack.pop();
-    }
+    if (item === "(") stack.push("(");
+    else stack.pop();
   }
 
   return stack.length ? "NO" : "YES";

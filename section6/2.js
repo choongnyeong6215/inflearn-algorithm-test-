@@ -2,12 +2,8 @@ function solution(words) {
   const stack = [];
 
   for (let item of words) {
-    if (item !== ")") {
-      stack.push(item);
-    } else {
-      // 괄호 한쌍 없어질때까지 문자열 제거
-      while (stack.pop() !== "(");
-    }
+    if (item === ")") while (stack.pop() !== "(");
+    else stack.push(item);
   }
 
   return stack.join("");
